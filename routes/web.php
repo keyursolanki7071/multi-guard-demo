@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomepageController;
@@ -23,7 +24,7 @@ Route::prefix("admin")->group(function() {
     });
 
     Route::middleware("auth:admin")->group(function() {
-        Route::get("/", [AdminLoginController::class, "dashboard"])->name("admin.dashboard");
+        Route::get("/", [DashboardController::class, "index"])->name("admin.dashboard");
         Route::get("logout", [AdminLoginController::class, "logout"])->name("admin.logout");
     });
 
